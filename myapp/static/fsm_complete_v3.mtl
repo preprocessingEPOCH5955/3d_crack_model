@@ -1,0 +1,52 @@
+# Blender 4.2.3 LTS MTL File: 'fsm_v2.blend'
+# www.blender.org
+
+newmtl fsm_front_ok
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd raw_data/fsm_front_ok.jpg
+map_d raw_data/fsm_front_ok.jpg
+
+newmtl fsm_front_ok.001
+Ns 549.027466
+Ka 0.710843 0.710843 0.710843
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 3
+map_Kd raw_data/fsm_front_ok.jpg
+map_d raw_data/fsm_front_ok.jpg
+
+newmtl left_right_half
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd raw_data/left_right_half.jpg
+map_d raw_data/left_right_half.jpg
+
+newmtl left_right_half.001
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd raw_data/left_right_half.jpg
+map_d raw_data/left_right_half.jpg
+
+newmtl pillar_left2.001
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
