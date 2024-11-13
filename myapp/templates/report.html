@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crack Detection Data</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        button {
+            margin: 20px 0;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Crack Detection Report</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Scanned Area</th>
+                    <th>Crack Detected</th>
+                    <th>Crack Severity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>10:00 AM</td>
+                    <td>Front</td>
+                    <td>Yes</td>
+                    <td>High</td>
+                </tr>
+                <tr>
+                    <td>10:05 AM</td>
+                    <td>Back</td>
+                    <td>No</td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>10:10 AM</td>
+                    <td>Left</td>
+                    <td>Yes</td>
+                    <td>Low</td>
+                </tr>
+                <tr>
+                    <td>10:15 AM</td>
+                    <td>Right</td>
+                    <td>No</td>
+                    <td>N/A</td>
+                </tr>
+                
+            </tbody>
+        </table>
+
+        <a href="{% url "mymodel" %}"><button >Load Model</button></a>
+    </div>
+
+
+</body>
+</html>

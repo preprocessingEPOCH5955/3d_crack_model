@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Model with One Side Painted</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/OBJLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+    <div id="container"></div>
+
+    <script>
+        // Set up the scene, camera, and renderer
+        var scene = new THREE.Scene();
+        var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        var renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('container').appendChild(renderer.domElement);
+
+        // Add lighting
+        var light = new THREE.DirectionalLight(0xffffff, 1);
+        light.position.set(1, 1, 1).normalize();
+        scene.add(light);
+
+        // Load the .obj model
+        var loader = new THREE.OBJLoader();
+        loader.load('/static/building_model.obj', function (object) {
+            object.traverse(function (child) {
+                if (child.isMesh) {
+                    // Assign a base material to the model (e.g., white)
+                    child.material = new THREE.MeshBasicMaterial({ color: 0xFFFFFF }); // White
+
+                    // Check if the mesh is the specific side you want to paint (adjust based on your model structure)
+                    // Assuming we want to paint one particular mesh red
+                    if (child.name === 'SideToColor') { // Replace 'SideToColor' with actual mesh name if known
+                        child.material = new THREE.MeshBasicMaterial({ color: 0xFF0000 }); // Red
+                    }
+                }
+            });
+
+            scene.add(object);
+            object.position.set(0, -10, 0); // Adjust the position of the model
+        });
+
+        // Add OrbitControls for interaction
+        var controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true; // Smooth motion
+        controls.dampingFactor = 0.05;
+        controls.screenSpacePanning = false;
+        controls.minDistance = 10;
+        controls.maxDistance = 100;
+
+        // Set camera position and animate
+        camera.position.z = 30;
+        var animate = function () {
+            requestAnimationFrame(animate);
+            controls.update(); // Update controls for smooth movement
+            renderer.render(scene, camera);
+        };
+        animate();
+    </script>
+</body>
+</html>

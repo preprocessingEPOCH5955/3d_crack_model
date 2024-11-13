@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crack Detection Data</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            text-align: center;
+        }
+
+        .cross-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 50px);
+            grid-template-rows: repeat(4, 50px);
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .cross {
+            width: 50px;
+            height: 50px;
+            background-color: green; /* Change cross color to green */
+            position: relative;
+        }
+        .cutom-color{
+            width: 50px;
+            height: 50px;
+            background-color: {{color}}; /* Change cross color to green */
+            position: relative;
+        }
+      
+
+         {% comment %} .cross:before, .cross:after {
+            content: '';
+            position: absolute;
+            background-color: {{color}}; /* Change cross color to green */
+            width: 6px;
+            height: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .cross:after {
+            width: 100%;
+            height: 6px;
+            top: 50%;
+            transform: translateY(-50%);
+        }  {% endcomment %}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+        <div class="row">
+            <a class="col-auto" href=" {% url "side_btn" 1 %}"><button class="btn btn-primary">Front</button></a> 
+            <a class="col-auto" href=" {% url "side_btn" 3 %}"><button class="btn btn-primary">Left</button></a> 
+            <a class="col-auto" href=" {% url "side_btn" 2 %}"><button class="btn btn-primary">Back</button></a> 
+            <a class="col-auto" href=" {% url "side_btn" 4 %}"><button class="btn btn-primary">Right</button></a> 
+            <a class="col-auto" href=" {% url "reset" %}"><button class="btn btn-danger">Reset</button></a> 
+        </div>    
+        </div>
+        <h2>Crack Detection Report</h2>
+        
+        {% if data %}
+        {{project_name}}
+        <table>
+            <thead>
+                <tr>
+                    <th>Side</th>
+                    <th>Building</th>
+                    <th>Longitude</th>
+                    <th>Latitude</th>
+                    <th>Lidar Reading (m)</th>
+                    <th>Cracks Result</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in data %}
+                
+                    <td>{{ record.face }}</td>
+                    <td>{{ record.building_id }}</td>
+                    <td>{{ record.longitude }}</td>
+                    <td>{{ record.latitude }}</td>
+                    <td>{{ record.lidar }}</td>
+                    <td>{{ record.cracks }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        {% endif %}
+        <!-- i = row , j = col-->
+
+        <!-- Cross Grid -->
+        {% comment %} <div class="cross-grid">
+            {% for i in range_grid %}
+                {% for j in range_grid %}
+                {% if i in row  and j in col  %}
+                <div class='cutom-color'>{{i}}{{j}}</div>
+                {% else %}
+                <div class="cross">{{i}}{{j}}</div>
+                {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </div> {% endcomment %}
+        <div class="cross-grid">
+            
+            {% comment %} {% if value == 1 %} {% endcomment %}
+            <div class="cross" style="background-color: {{ boxes.box1 }};"></div>
+            <div class="cross" style="background-color: {{ boxes.box2 }};"></div>
+            <div class="cross" style="background-color: {{ boxes.box3 }};"></div>
+            <div class="cross" style="background-color: {{ boxes.box4 }};"></div>
+            <div class="cross" style="background-color: {{ boxes.box5 }};"></div>
+            <div class="cross" style="background-color: {{ boxes.box6 }};"></div>
+            <div class="cross" style="background-color: {{ boxes.box7 }};"></div>
+            <div class="cross" style="background-color: {{ boxes.box8 }};"></div>
+            <div class="cross" style="background-color: {{ boxes.box9 }};"></div>
+            <div class="cross" style="background-color: {{ boxes.box10 }};"></div>
+            <div class="cross" style="background-color: {{ boxes.box11 }};"></div>
+            <div class="cross" style="background-color: {{ boxes.box12 }};"></div>
+            <div class="cross" style="background-color: {{ boxes.box13 }};"></div>
+            <div class="cross" style="background-color: {{ boxes.box14 }};"></div>
+            <div class="cross" style="background-color: {{ boxes.box15 }};"></div>
+            <div class="cross" style="background-color: {{ boxes.box16 }};"></div>
+                {% comment %} {% if value == 2 %}
+                <div  id = '2'  class="custom-color"></div>
+            {% else %}
+                <div  id = '2'  class="cross"></div>
+                {% endif %} {% endcomment %}
+                
+        </div>
+
+    </div>
+</body>
+</html>
