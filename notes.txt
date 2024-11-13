@@ -1,0 +1,17 @@
+
+
+remember to be on same wifi 
+and run server with 0.0.0.0
+python .\manage.py runserver 0.0.0.0:8000
+
+1) drone with pi will send crack location to this point using gps
+http://127.0.0.1:8000/latest_crack_coordinates
+or 
+http://laptop_ip:8000/latest_crack_coordinates
+
+2) when scaning is done of one face, reset report
+http://127.0.0.1:8000/reset_report
+or 
+http://laptop_ip:8000/reset_report
+
+it is a get request

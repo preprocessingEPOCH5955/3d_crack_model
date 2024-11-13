@@ -1,0 +1,4 @@
+longitude,latitude,Lidar reading,cracks result
+31.350,72.800,5,Minor cracks
+31.400,72.300,8,Severe cracks
+31.460,72.650,9,Minor cracks
